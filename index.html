@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DeciTI · Sistema de análisis de decisiones para TI</title>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     PANTALLA 1: BIENVENIDA
+     ============================================================ -->
+<section id="screen-welcome" class="screen">
+  <div class="welcome-wrap">
+    <div class="welcome-brand">
+      <span class="brand-mark">DT</span>
+      <span class="brand-name">Deci<strong>TI</strong></span>
+    </div>
+
+    <h1 class="welcome-title">Sistema de análisis de decisiones para Ingeniería de Software</h1>
+    <p class="welcome-sub">
+      Cinco herramientas clásicas de toma de decisiones — FODA, 6 Sombreros, Ishikawa, Pareto y CATWDA —
+      aplicadas a una problemática real mediante un motor de reglas 100% local.
+    </p>
+
+    <div class="problem-banner problem-banner-welcome">
+      <span class="problem-eyebrow">Problemática a resolver</span>
+      <p id="problem-statement-text">—</p>
+    </div>
+
+    <div class="welcome-actions">
+      <button id="btn-start" class="btn btn-primary">Comenzar análisis</button>
+      <button id="btn-load-example" class="btn btn-ghost">Cargar ejemplo</button>
+    </div>
+
+    <div class="welcome-steps">
+      <div class="welcome-step"><span>01</span>Responde 10 preguntas sobre la importancia de cada factor.</div>
+      <div class="welcome-step"><span>02</span>El motor de reglas genera el análisis de forma instantánea.</div>
+      <div class="welcome-step"><span>03</span>Explora FODA, 6 Sombreros, Ishikawa, Pareto y CATWDA.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANTALLA 2: FORMULARIO (5 pasos)
+     ============================================================ -->
+<section id="screen-form" class="screen hidden">
+  <div class="form-wrap">
+    <div class="form-top">
+      <div class="problem-banner problem-banner-compact">
+        <span class="problem-eyebrow">Problemática fija</span>
+        <p id="problem-statement-text-2">—</p>
+      </div>
+      <div class="progress-track">
+        <div id="form-progress-bar" class="progress-fill"></div>
+      </div>
+      <span id="form-progress-text" class="progress-text">Paso 1 de 5</span>
+    </div>
+
+    <div id="form-questions" class="form-questions"></div>
+
+    <div class="form-nav">
+      <button id="btn-form-prev" class="btn btn-ghost">Anterior</button>
+      <button id="btn-form-next" class="btn btn-primary" disabled>Siguiente</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PANTALLA 3: DASHBOARD
+     ============================================================ -->
+<section id="screen-dashboard" class="screen hidden">
+  <div class="dashboard-layout">
+
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-mark">DT</span>
+        <span class="brand-name">Deci<strong>TI</strong></span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="sidebar-link active" data-section="resumen">
+          <span class="sidebar-icon">&#9776;</span>Resumen
+        </button>
+        <button class="sidebar-link" data-section="foda">
+          <span class="sidebar-icon">&#9638;</span>FODA
+        </button>
+        <button class="sidebar-link" data-section="sombreros">
+          <span class="sidebar-icon">&#9899;</span>6 Sombreros
+        </button>
+        <button class="sidebar-link" data-section="ishikawa">
+          <span class="sidebar-icon">&#10022;</span>Ishikawa
+        </button>
+        <button class="sidebar-link" data-section="pareto">
+          <span class="sidebar-icon">&#9776;</span>Pareto
+        </button>
+        <button class="sidebar-link" data-section="catwda">
+          <span class="sidebar-icon">&#9673;</span>CATWDA
+        </button>
+      </nav>
+
+      <div class="sidebar-actions">
+        <button id="btn-edit-responses" class="btn btn-ghost btn-block">Editar respuestas</button>
+        <button id="btn-new-analysis" class="btn btn-danger-ghost btn-block">Nuevo análisis</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <div class="dashboard-topbar">
+        <button id="btn-menu-toggle" class="btn-icon" aria-label="Abrir menú">&#9776;</button>
+        <span class="topbar-title">DeciTI</span>
+      </div>
+
+      <div id="view-resumen" class="dashboard-view active"></div>
+      <div id="view-foda" class="dashboard-view"></div>
+      <div id="view-sombreros" class="dashboard-view"></div>
+      <div id="view-ishikawa" class="dashboard-view"></div>
+      <div id="view-pareto" class="dashboard-view"></div>
+      <div id="view-catwda" class="dashboard-view"></div>
+    </main>
+  </div>
+</section>
+
+<!-- ============================================================
+     MODAL: Confirmar nuevo análisis
+     ============================================================ -->
+<div id="confirm-modal" class="modal-overlay">
+  <div class="modal-box">
+    <h3>¿Iniciar un nuevo análisis?</h3>
+    <p>Se eliminarán las respuestas y los resultados actuales. La problemática permanecerá fija. Esta acción no se puede deshacer.</p>
+    <div class="modal-actions">
+      <button id="confirm-cancel" class="btn btn-ghost">Cancelar</button>
+      <button id="confirm-accept" class="btn btn-danger">Sí, empezar de nuevo</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/rules.js"></script>
+<script src="js/foda.js"></script>
+<script src="js/sombreros.js"></script>
+<script src="js/ishikawa.js"></script>
+<script src="js/pareto.js"></script>
+<script src="js/catwda.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
